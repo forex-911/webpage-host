@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siva | Portfolio</title>
+
+  <style>
+    /* ----------------------- BASE STYLES ----------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0e0e10;
+      color: #eaeaea;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ----------------------- NAVBAR ----------------------- */
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(20, 20, 22, 0.7);
+      backdrop-filter: blur(12px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #00c9a7;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      position: relative;
+      padding-bottom: 4px;
+      transition: 0.3s;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #00c9a7;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ----------------------- HERO SECTION ----------------------- */
+    .hero {
+      width: 100%;
+      max-width: 1100px;
+      padding: 10rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #00c9a7;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .hero button {
+      background: linear-gradient(135deg, #00c9a7, #007bff);
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    /* ----------------------- MAIN SECTION ----------------------- */
+    main {
+      width: 90%;
+      max-width: 1100px;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ----------------------- CARD ----------------------- */
+    .card {
+      background: #16171b;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, #00c9a7, transparent 60%);
+      transform: scale(0);
+      transition: 0.5s ease;
+      opacity: 0.15;
+    }
+
+    .card:hover::before {
+      transform: scale(1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #00c9a7;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.6;
+    }
+
+    /* ----------------------- ABOUT SECTION ----------------------- */
+    #about {
+      margin-top: 4rem;
+      text-align: left;
+    }
+
+    /* ----------------------- PROJECT SECTION ----------------------- */
+    #projects {
+      margin-top: 4rem;
+    }
+
+    .project-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .project-item h3 {
+      color: #00c9a7;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-item p {
+      color: #999;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ----------------------- CONTACT SECTION ----------------------- */
+    #contact {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .socials a {
+      font-size: 1.2rem;
+      transition: 0.3s;
+      color: #bbb;
+    }
+
+    .socials a:hover {
+      color: #00c9a7;
+      transform: scale(1.2);
+    }
+
+    /* ----------------------- FOOTER ----------------------- */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* ----------------------- RESPONSIVE ----------------------- */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 2rem;
+      }
+
+      .nav-links {
+        margin-top: 0.8rem;
+        gap: 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      main {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ======================= NAVBAR ======================= -->
+  <nav>
+    <div class="logo">Siva.</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero">
+    <h1>Hi, I'm Siva</h1>
+    <p>
+      A developer passionate about building impactful digital experiences.  
+      I combine design, code, and creativity to craft elegant and functional solutions.
+    </p>
+    <a href="#projects"><button>View My Work</button></a>
+  </section>
+
+  <!-- ======================= ABOUT SECTION ======================= -->
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <p>
+      I specialize in full-stack web development, UI/UX design, and automation.
+      With a strong background in AI-driven applications and cloud technologies, I aim to create
+      efficient systems that blend usability with innovation.
+    </p>
+    <br />
+    <p>
+      <strong>Skills:</strong> HTML, CSS, JavaScript, Python, React, Node.js, MongoDB, Machine Learning  
+      <br />
+      <strong>Strengths:</strong> Problem-solving, Clean Design Thinking, Performance Optimization  
+      <br />
+      <strong>Currently Working On:</strong> AI-powered productivity tools and interactive front-end experiences
+    </p>
+    <!-- 🔧 You can add more attributes or career details here -->
+  </section>
+
+  <!-- ======================= PROJECTS SECTION ======================= -->
+  <section id="projects" class="card">
+    <h2>Projects</h2>
+    <div class="project-item">
+      <h3>Local Connect App</h3>
+      <p>
+        A real-time location-based networking platform enabling users to connect within a 15 km radius.
+        Built with Node.js, MongoDB, and Socket.io.
+      </p>
+    </div>
+    <div class="project-item">
+      <h3>AI Image Enhancer</h3>
+      <p>
+        Advanced ML model using OpenCV and ONNX Runtime for automatic image clarity improvement
+        in low-light environments.
+      </p>
+    </div>
+    <div class="project-item">
+      <h3>TravelNow Website</h3>
+      <p>
+        Minimalist travel booking platform with seamless animations, modern UI, and real-time availability tracking.
+      </p>
+    </div>
+    <!-- 💡 Add more project cards or categories here -->
+  </section>
+
+  <!-- ======================= CONTACT SECTION ======================= -->
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <p>
+      Let’s collaborate or chat about tech, innovation, or design.  
+      Feel free to reach out through any of my social channels below.
+    </p>
+
+    <div class="socials">
+      <!-- 🔗 Update your handles below -->
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer>
+    © 2025 Siva. Designed & Coded with ❤️ by Siva.
+  </footer>
+
+  <!-- ======================= JS FOR INTERACTIONS ======================= -->
+  <script>
+    // Smooth scroll + active section highlight logic (optional enhancement)
+    const links = document.querySelectorAll(".nav-links a");
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        links.forEach(l => l.classList.remove("active"));
+        e.target.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
