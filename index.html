@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Siva | Portfolio</title>
 
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
   <style>
     /* ----------------------- BASE STYLES ----------------------- */
     * {
@@ -53,7 +59,7 @@
       font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: 1px;
-      color: #00c9a7;
+      color: #ffffff;
     }
 
     .nav-links {
@@ -75,7 +81,7 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #00c9a7;
+      background-color: #a4b2b0;
       transition: 0.3s;
     }
 
@@ -94,7 +100,7 @@
     .hero h1 {
       font-size: 2.8rem;
       font-weight: 700;
-      color: #00c9a7;
+      color: #ffffff;
       margin-bottom: 0.8rem;
     }
 
@@ -107,7 +113,7 @@
     }
 
     .hero button {
-      background: linear-gradient(135deg, #00c9a7, #007bff);
+      background: linear-gradient(135deg, #eb53a9, #ef93bf);
       border: none;
       padding: 0.9rem 1.8rem;
       border-radius: 8px;
@@ -122,16 +128,6 @@
       opacity: 0.9;
     }
 
-    /* ----------------------- MAIN SECTION ----------------------- */
-    main {
-      width: 90%;
-      max-width: 1100px;
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
     /* ----------------------- CARD ----------------------- */
     .card {
       background: #16171b;
@@ -142,23 +138,7 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       position: relative;
       overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 30%, #00c9a7, transparent 60%);
-      transform: scale(0);
-      transition: 0.5s ease;
-      opacity: 0.15;
-    }
-
-    .card:hover::before {
-      transform: scale(1);
+      z-index: 1;
     }
 
     .card:hover {
@@ -170,7 +150,7 @@
     .card h2 {
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
-      color: #00c9a7;
+      color: #8c8c8c;
     }
 
     .card p {
@@ -179,53 +159,90 @@
       line-height: 1.6;
     }
 
-    /* ----------------------- ABOUT SECTION ----------------------- */
+    /* ----------------------- ABOUT ----------------------- */
     #about {
       margin-top: 4rem;
       text-align: left;
+      width: 90%;
+      max-width: 1100px;
     }
 
-    /* ----------------------- PROJECT SECTION ----------------------- */
+    /* ----------------------- PROJECTS ----------------------- */
     #projects {
       margin-top: 4rem;
+      width: 90%;
+      max-width: 1100px;
     }
 
-    .project-item {
-      margin-bottom: 1.2rem;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
 
-    .project-item h3 {
-      color: #00c9a7;
-      margin-bottom: 0.3rem;
-    }
-
-    .project-item p {
-      color: #999;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* ----------------------- CONTACT SECTION ----------------------- */
-    #contact {
+    .project-card {
+      background: #16171b;
+      border-radius: 16px;
+      padding: 1.5rem;
       text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #696969;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-card h3 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .git-box {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      color: #b6b6b6;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .git-box:hover {
+      background-color: #686868;
+      color: #0e0e10;
+    }
+
+    /* ----------------------- CONTACT ----------------------- */
+    #contact {
       margin-top: 4rem;
+      width: 90%;
+      max-width: 700px;
+      text-align: center;
     }
 
     .socials {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 2rem;
       margin-top: 1.5rem;
+      position: relative;
+      z-index: 10;
     }
 
     .socials a {
-      font-size: 1.2rem;
-      transition: 0.3s;
+      font-size: 1.6rem;
       color: #bbb;
+      transition: 0.3s ease;
     }
 
     .socials a:hover {
-      color: #00c9a7;
+      color: #bbbbbb;
       transform: scale(1.2);
     }
 
@@ -254,10 +271,6 @@
       .hero h1 {
         font-size: 2.2rem;
       }
-
-      main {
-        margin-top: 2rem;
-      }
     }
   </style>
 </head>
@@ -276,13 +289,13 @@
   <section class="hero">
     <h1>Hi, I'm forex911</h1>
     <p>
-      A developer passionate about building impactful digital experiences.  
+      A developer passionate about building impactful digital experiences.<br />
       I combine design, code, and creativity to craft elegant and functional solutions.
     </p>
     <a href="#projects"><button>View My Work</button></a>
   </section>
 
-  <!-- ======================= ABOUT SECTION ======================= -->
+  <!-- ======================= ABOUT ======================= -->
   <section id="about" class="card">
     <h2>About Me</h2>
     <p>
@@ -292,72 +305,54 @@
     </p>
     <br />
     <p>
-      <strong>Skills:</strong> HTML, CSS, JavaScript, Python, React, Node.js, MongoDB, Machine Learning  
-      <br />
-      <strong>Strengths:</strong> Problem-solving, Clean Design Thinking, Performance Optimization  
-      <br />
+      <strong>Skills:</strong> HTML, CSS, JavaScript, Python, React, Node.js, MongoDB, Machine Learning<br />
+      <strong>Strengths:</strong> Problem-solving, Clean Design Thinking, Performance Optimization<br />
       <strong>Currently Working On:</strong> AI-powered productivity tools and interactive front-end experiences
     </p>
-    <!-- 🔧 You can add more attributes or career details here -->
   </section>
 
-  <!-- ======================= PROJECTS SECTION ======================= -->
-  <section id="projects" class="card">
+  <!-- ======================= PROJECTS ======================= -->
+  <section id="projects">
     <h2>Projects</h2>
-    <div class="project-item">
-      <h3>Local Connect App</h3>
-      <p>
-        A real-time location-based networking platform enabling users to connect within a 15 km radius.
-        Built with Node.js, MongoDB, and Socket.io.
-      </p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Local Connect App</h3>
+        <a class="git-box" href="#" target="_blank">Git Link</a>
+      </div>
+      <div class="project-card">
+        <h3>AI Image Enhancer</h3>
+        <a class="git-box" href="#" target="_blank">Git Link</a>
+      </div>
+      <div class="project-card">
+        <h3>TravelNow Website</h3>
+        <a class="git-box" href="#" target="_blank">Git Link</a>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Redesign</h3>
+        <a class="git-box" href="#" target="_blank">Git Link</a>
+      </div>
+      <div class="project-card">
+        <h3>AI Chat Interface</h3>
+        <a class="git-box" href="#" target="_blank">Git Link</a>
+      </div>
     </div>
-    <div class="project-item">
-      <h3>AI Image Enhancer</h3>
-      <p>
-        Advanced ML model using OpenCV and ONNX Runtime for automatic image clarity improvement
-        in low-light environments.
-      </p>
-    </div>
-    <div class="project-item">
-      <h3>TravelNow Website</h3>
-      <p>
-        Minimalist travel booking platform with seamless animations, modern UI, and real-time availability tracking.
-      </p>
-    </div>
-    <!-- 💡 Add more project cards or categories here -->
   </section>
 
-  <!-- ======================= CONTACT SECTION ======================= -->
+  <!-- ======================= CONTACT ======================= -->
   <section id="contact" class="card">
     <h2>Contact</h2>
-    <p>
-      Let’s collaborate or chat about tech, innovation, or design.  
-      Feel free to reach out through any of my social channels below.
-    </p>
+    <p>Let's connect or collaborate. Find me on these platforms:</p>
 
     <div class="socials">
-      <!-- 🔗 Update your handles below -->
-      <a href="https://www.instagram.com/its_siva._?igsh=MXRybGxvZHEwY3Jicg== " target="_blank">Instagram</a>
-      <a href="https://www.linkedin.com/in/sivasubramaniyan-c-325397371/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/forex-911" target="_blank">GitHub</a>
+      <a href="https://www.instagram.com/its_siva._?igsh=MXRybGxvZHEwY3Jicg==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sivasubramaniyan-c-325397371/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/forex-911" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </section>
 
   <!-- ======================= FOOTER ======================= -->
   <footer>
-    © 2025 Siva. Designed & Coded with ❤️ by Siva.
+    Ella Pugalum GPT kehh🎀
   </footer>
-
-  <!-- ======================= JS FOR INTERACTIONS ======================= -->
-  <script>
-    // Smooth scroll + active section highlight logic (optional enhancement)
-    const links = document.querySelectorAll(".nav-links a");
-    links.forEach(link => {
-      link.addEventListener("click", e => {
-        links.forEach(l => l.classList.remove("active"));
-        e.target.classList.add("active");
-      });
-    });
-  </script>
 </body>
 </html>
